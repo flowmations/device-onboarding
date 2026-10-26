@@ -2,7 +2,6 @@
 
 Two linked workflows that take a hardware distributor invoice and turn it into fully registered, named, and documented Windows Autopilot devices, with human approval at the points that matter.
 
-Built for a managed services provider (SkyCamp Technologies) that purchases laptops for 30+ client organizations through TD Synnex.
 
 > **Results**
 >
@@ -119,7 +118,7 @@ Autopilot needs the device model, but invoices only list the distributor part nu
 
 ### 6. Select the customer
 
-The virtual assistant receives a Teams message, with a link to the PO, asking which customer the devices belong to. The workflow then pulls that customer's default domain from CIPP and hands the devices to the Autopilot workflow.
+The virtual assistant receives a Teams message, with a link to the PO, asking which customer the devices belong to. The workflow then pulls that customer's default domain from CIPP and hands the devices to the Autopilot workflow.  
 
 ---
 
@@ -158,8 +157,5 @@ A Hudu asset is created for each device, and the Autopilot and rename results ar
 
 **Why a self-maintaining mapping list?** Part numbers change constantly as models are refreshed. Instead of maintaining the list by hand, the workflow asks for a mapping only when it sees a new part number and prefills the answer from Dell TechDirect, so the list grows as a byproduct of normal work.
 
-**Why check every existing device before naming?** Checking only Autopilot would miss devices that are already deployed, and checking only deployed devices would miss ones still waiting for a user. Looking at both prevents duplicate names.
-
 **Why human approval before registration?** Registering a device in the wrong customer's tenant is costly to undo. A single approval step, with the full data in front of the technician and the option to edit it, catches mistakes before anything changes in the tenant.
 
-**Why retries on rename?** Newly registered devices don't always accept a rename right away. Automatic retries handle that timing issue without a technician having to watch the process.
